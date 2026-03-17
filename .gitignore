@@ -1,0 +1,17 @@
+# Generated notebooks with outputs
+*_executed.ipynb
+
+# Trained model checkpoints (large binary files)
+*.pth
+*.pt
+*.pkl
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
