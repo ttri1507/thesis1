@@ -1,6 +1,9 @@
-import sys
+import importlib.util
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+_MODULE_PATH = Path(__file__).resolve().parent.parent / "FUNC_PATH_SAT.py"
+_SPEC = importlib.util.spec_from_file_location("base_FUNC_PATH_SAT", _MODULE_PATH)
+_MODULE = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_MODULE)
 
-from FUNC_PATH_SAT import FUNC_PATH_SAT  # noqa: E402,F401
+FUNC_PATH_SAT = _MODULE.FUNC_PATH_SAT

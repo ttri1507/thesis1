@@ -93,7 +93,7 @@ def run():
     plt.semilogy(x, time_total[1, :], "b--^", markersize=4, linewidth=1)
     plt.legend(["Time_GTC", "Time_PA"])
     plt.xlabel("Number of UEs")
-    plt.ylabel("Executive time (s)")
+    plt.ylabel("Execution time (s)")
     plt.show()
 
     data = np.column_stack((x, time_total.T))

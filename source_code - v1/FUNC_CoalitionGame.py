@@ -36,6 +36,7 @@ def FUNC_CoalitionGame(MODEL, B, t_thres, theta, Area, IdClusUE_RC, NumUE_in_SAT
                 id_temp = id_clus_ue.copy()
                 num_temp = numUE_in_SAT.copy()
                 nUEm = num_temp[m - 1]
+                vm_old = func_utility(distance, chan, m, id_clus_ue, theta, t_total, h_total)
                 if nUEm == B:
                     um = np.where(id_clus_ue == m)[0]
                     for up in um:
@@ -46,7 +47,7 @@ def FUNC_CoalitionGame(MODEL, B, t_thres, theta, Area, IdClusUE_RC, NumUE_in_SAT
                         id_temp[up] = mp
                         vmp_new = func_utility(distance, chan, mp, id_temp, theta, t_total, h_total)
                         vm_new = func_utility(distance, chan, m, id_temp, theta, t_total, h_total)
-                        gap_new = (vmp_old + vmp_old) - (vmp_new + vmp_new)
+                        gap_new = (vmp_old + vm_old) - (vmp_new + vm_new)
                         if gap_new > gap:
                             id_ok = id_temp
                             gap = gap_new
@@ -56,7 +57,7 @@ def FUNC_CoalitionGame(MODEL, B, t_thres, theta, Area, IdClusUE_RC, NumUE_in_SAT
                     num_temp[m - 1] += 1
                     vmp_new = func_utility(distance, chan, mp, id_temp, theta, t_total, h_total)
                     vm_new = func_utility(distance, chan, m, id_temp, theta, t_total, h_total)
-                    gap_new = (vmp_old + vmp_old) - (vmp_new + vmp_new)
+                    gap_new = (vmp_old + vm_old) - (vmp_new + vm_new)
                     if gap_new > gap:
                         id_ok = id_temp
                         num_ok = num_temp

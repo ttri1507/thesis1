@@ -96,8 +96,6 @@ def function_update_multiSAT(
     optimal_obj2 = 0.0
     pow_ = np.zeros((numSAT, numUE), dtype=float)
     rate = np.zeros(numUE, dtype=float)
-    pmax_fixed = Pmax_overline[2] if len(Pmax_overline) >= 3 else Pmax_overline[-1]
-
     for m in range(1, numSAT + 1):
         um = np.where(IdClusUE == m)[0]
         beta_m = Beta[m - 1, um]
@@ -108,7 +106,7 @@ def function_update_multiSAT(
             beta_m,
             rho_m,
             sigma_u,
-            pmax_fixed,
+            Pmax_overline[m - 1],
             tau_ref2,
             Pow_cir_overline[m - 1],
         )

@@ -39,7 +39,7 @@ def FUNC_randomClustering(MODEL, B, t_thres, theta, Area):
                     id_clus_ue[u] = ind_sat
 
         if numLoop == 1000:
-            raise RuntimeError("Cannot clustering due to strict constraints")
+            raise RuntimeError("Cannot perform clustering due to strict constraints")
 
     MODEL["IdClusUE"] = id_clus_ue
     MODEL["NumUE_in_SAT"] = numUE_in_SAT

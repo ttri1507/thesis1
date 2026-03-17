@@ -1,6 +1,9 @@
-import sys
+import importlib.util
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+_MODULE_PATH = Path(__file__).resolve().parent.parent / "FUNC_CoalitionGame.py"
+_SPEC = importlib.util.spec_from_file_location("base_FUNC_CoalitionGame", _MODULE_PATH)
+_MODULE = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_MODULE)
 
-from FUNC_CoalitionGame import FUNC_CoalitionGame  # noqa: E402,F401
+FUNC_CoalitionGame = _MODULE.FUNC_CoalitionGame

@@ -1,6 +1,9 @@
-import sys
+import importlib.util
 from pathlib import Path
 
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+_MODULE_PATH = Path(__file__).resolve().parent.parent / "FUNC_randomClustering.py"
+_SPEC = importlib.util.spec_from_file_location("base_FUNC_randomClustering", _MODULE_PATH)
+_MODULE = importlib.util.module_from_spec(_SPEC)
+_SPEC.loader.exec_module(_MODULE)
 
-from FUNC_randomClustering import FUNC_randomClustering  # noqa: E402,F401
+FUNC_randomClustering = _MODULE.FUNC_randomClustering
